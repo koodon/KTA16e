@@ -28,13 +28,18 @@ namespace Exercises
                 textview1.Text = "Tekst muutus";
             };
 
-
             var button3 = FindViewById<Button>(Resource.Id.button3);
             button3.Click += delegate
             {
-                var webviewActivity = new Intent(this, typeof(WebviewActivity));
-                
+                var webviewActivity = new Intent(this, typeof(WebviewActivity));                
                 StartActivity(webviewActivity);
+            };
+
+            var button4 = FindViewById<Button>(Resource.Id.button4);
+            button4.Click += delegate
+            {
+                var listviewActivity = new Intent(this, typeof(ListOfThingsActivity));
+                StartActivity(listviewActivity);
             };
         }
     } 
