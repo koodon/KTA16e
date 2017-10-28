@@ -24,7 +24,14 @@ namespace Exercises
             var ourList = FindViewById<ListView>(Resource.Id.listView1);
 
             var items = new string[] {"Bmw", "Audi", "Ferrari", "Mercedes", "Lada"};
-            ourList.Adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, items);
+            ourList.Adapter = new CustomAdapter(this,items);
+            ourList.ItemClick += OurList_ItemClick;
+
+        }
+
+        private void OurList_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            Android.Widget.Toast.MakeText(this, "Vajutasid", Android.Widget.ToastLength.Short).Show();
         }
     }
 }

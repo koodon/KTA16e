@@ -14,6 +14,11 @@ namespace Exercises
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             var button1 = FindViewById<Button>(Resource.Id.button1);
+            var button2 = FindViewById<Button>(Resource.Id.button2);
+            var button3 = FindViewById<Button>(Resource.Id.button3);
+            var button4 = FindViewById<Button>(Resource.Id.button4);
+            var textview1 = FindViewById<TextView>(Resource.Id.textView1);
+
             button1.Click += delegate
             {
                 var secondActivity = new Intent(this, typeof(SecondActivity));
@@ -21,21 +26,17 @@ namespace Exercises
                 StartActivity(secondActivity);                
             };
 
-            var button2 = FindViewById<Button>(Resource.Id.button2);
-            var textview1 = FindViewById<TextView>(Resource.Id.textView1);
             button2.Click += delegate 
             {
                 textview1.Text = "Tekst muutus";
             };
 
-            var button3 = FindViewById<Button>(Resource.Id.button3);
             button3.Click += delegate
             {
                 var webviewActivity = new Intent(this, typeof(WebviewActivity));                
                 StartActivity(webviewActivity);
             };
 
-            var button4 = FindViewById<Button>(Resource.Id.button4);
             button4.Click += delegate
             {
                 var listviewActivity = new Intent(this, typeof(ListOfThingsActivity));
