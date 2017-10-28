@@ -22,10 +22,7 @@ namespace Exercises
             // Create your application here
             SetContentView(Resource.Layout.ListOfThingsLayout);
             var ourList = FindViewById<ListView>(Resource.Id.listView1);
-            var carList = GenerateCars();          
-
-
-
+            var carList = GenerateCars();    
             
             ourList.Adapter = new CustomAdapter(this,carList);
             ourList.ItemClick += OurList_ItemClick;
@@ -39,12 +36,12 @@ namespace Exercises
         private List<Car> GenerateCars()
         {
             var listOfCars = new List<Car>();
-
+                                  
             var car1 = new Car();
             car1.Name = "Ferrari";
             car1.Kw = 325;
             listOfCars.Add(car1);
-
+            
             var car2 = new Car();
             car2.Name = "Lamborghini";
             car2.Kw = 124;
@@ -78,6 +75,7 @@ namespace Exercises
             car9.Name = "Jaguar";
             car9.Kw = 700;
             listOfCars.Add(car9);
+
             return listOfCars;
         }
     }
