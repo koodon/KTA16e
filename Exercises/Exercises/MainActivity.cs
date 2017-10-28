@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Android.Content;
 
 namespace Exercises
 {
@@ -15,7 +16,9 @@ namespace Exercises
             var button1 = FindViewById<Button>(Resource.Id.button1);
             button1.Click += delegate
             {
-                StartActivity(typeof(SecondActivity));
+                var secondActivity = new Intent(this, typeof(SecondActivity));
+                secondActivity.PutExtra("MyData", "Hello World");
+                StartActivity(secondActivity);                
             };
 
             var button2 = FindViewById<Button>(Resource.Id.button2);

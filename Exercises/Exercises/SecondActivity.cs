@@ -21,6 +21,11 @@ namespace Exercises
 
             // Create your application here
             SetContentView(Resource.Layout.SecondLayout);
+            var textview1 = FindViewById<TextView>(Resource.Id.textView1)
+;
+
+            var mytext = Intent.GetStringExtra("MyData");
+            textview1.Text = mytext;
         }
     }
 }

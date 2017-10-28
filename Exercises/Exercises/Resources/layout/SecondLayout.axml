@@ -6,9 +6,15 @@
     android:minWidth="25px"
     android:minHeight="25px">
     <TextView
-        android:text="Olete teisel vaatel"
+        android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView1" />
+    <ImageView
+        android:src="@drawable/pilt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView1"
+        android:scaleType="centerCrop" />
 </LinearLayout>
