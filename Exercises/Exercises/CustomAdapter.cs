@@ -9,28 +9,29 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Java.Lang;
 
 namespace Exercises
 {
-    public class CustomAdapter : BaseAdapter<string>
+    public class CustomAdapter : BaseAdapter
     {
-        string[] items;
+        List<Car> items;
         Activity context;
 
-        public CustomAdapter(Activity context, string[] items) : base()
+        public CustomAdapter(Activity context, List<Car> items) : base()
         {
             this.context = context;
             this.items = items;
-        }
-
-        public override string this[int position]
-        {
-            get { return items[position]; }
-        }
+        }       
 
         public override int Count
         {
-            get { return items.Length; }
+            get { return items.Count; }
+        }
+
+        public override Java.Lang.Object GetItem(int position)
+        {
+            return null; // could wrap a Contact in a Java.Lang.Object to return it here if needed
         }
 
         public override long GetItemId(int position)
@@ -43,8 +44,8 @@ namespace Exercises
             View view = convertView;
             if (view == null)
                 view = context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem2, null);
-            view.FindViewById<TextView>(Android.Resource.Id.Text1).Text = items[position];
-            view.FindViewById<TextView>(Android.Resource.Id.Text2).Text = items[position];
+            view.FindViewById<TextView>(Android.Resource.Id.Text1).Text = items[position].Name;
+            view.FindViewById<TextView>(Android.Resource.Id.Text2).Text = items[position].Kw.ToString();
             return view;
         }
     }

@@ -26,8 +26,8 @@ namespace Exercises
 
 
 
-            var items = new string[] {"Bmw", "Audi", "Ferrari", "Mercedes", "Lada"};
-            ourList.Adapter = new CustomAdapter(this,items);
+            
+            ourList.Adapter = new CustomAdapter(this,carList);
             ourList.ItemClick += OurList_ItemClick;
         }        
 
@@ -39,14 +39,17 @@ namespace Exercises
         private List<Car> GenerateCars()
         {
             var listOfCars = new List<Car>();
+
             var car1 = new Car();
             car1.Name = "Ferrari";
             car1.Kw = 325;
             listOfCars.Add(car1);
+
             var car2 = new Car();
             car2.Name = "Lamborghini";
             car2.Kw = 124;
             listOfCars.Add(car2);
+
             var car3 = new Car();
             car3.Name = "BMW";
             car3.Kw = 346;
