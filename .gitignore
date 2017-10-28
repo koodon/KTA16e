@@ -15,3 +15,4 @@ obj
 *.pfx
 
 *_ReSharper.*/
+Exercises/.vs/Exercises/v15/sqlite3/storage.ide
