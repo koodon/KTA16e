@@ -27,7 +27,15 @@ namespace Exercises
             {
                 textview1.Text = "Tekst muutus";
             };
-            
+
+
+            var button3 = FindViewById<Button>(Resource.Id.button3);
+            button3.Click += delegate
+            {
+                var webviewActivity = new Intent(this, typeof(WebviewActivity));
+                
+                StartActivity(webviewActivity);
+            };
         }
     } 
 }

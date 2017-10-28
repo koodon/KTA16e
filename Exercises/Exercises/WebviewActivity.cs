@@ -9,23 +9,23 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Webkit;
 
 namespace Exercises
 {
-    [Activity(Label = "SecondActivity")]
-    public class SecondActivity : Activity
+    [Activity(Label = "WebviewActivity")]
+    public class WebviewActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Create your application here
-            SetContentView(Resource.Layout.SecondLayout);
-            var textview1 = FindViewById<TextView>(Resource.Id.textView1)
-;
+            SetContentView(Resource.Layout.WebviewLayout);
 
-            var mytext = Intent.GetStringExtra("MyData") ?? "Data not available";
-            textview1.Text = mytext;
+            var webView = FindViewById<WebView>(Resource.Id.webView1);
+            //webView.SetWebViewClient(new WebViewClient());
+            webView.LoadUrl("http://www.rate.ee/");
         }
     }
 }
