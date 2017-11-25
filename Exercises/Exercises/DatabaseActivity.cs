@@ -21,6 +21,15 @@ namespace Exercises
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.DatabaseLayout);
 
+            //Otsime üles disainist nupud ja tekstiväljad
+            var createTableButton = FindViewById<Button>(Resource.Id.button1);
+            var addToDatabaseButton = FindViewById<Button>(Resource.Id.button2);
+            var carNameEditText = FindViewById<EditText>(Resource.Id.editText1);
+            var carModelEditText = FindViewById<EditText>(Resource.Id.editText2);
+            var carKwEditText = FindViewById<EditText>(Resource.Id.editText3);
+
+
+
             //Andmebaasi asukoht
             var docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
             var pathToDatabase = System.IO.Path.Combine(docsFolder, "db_sqlite.db");            
@@ -73,7 +82,7 @@ namespace Exercises
             {
                 var db = new SQLiteConnection(path);
                 if (db.Insert(data) != 0)
-                    db.Update(data);
+                    db.Update(data);                
                 return "Ühe kirje andmed lisatud või uuendatud";                
             }
             catch (SQLiteException ex)
