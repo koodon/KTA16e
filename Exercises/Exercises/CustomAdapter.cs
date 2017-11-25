@@ -43,9 +43,9 @@ namespace Exercises
         {
             View view = convertView;
             if (view == null)
-                view = context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem2, null);
-            view.FindViewById<TextView>(Android.Resource.Id.Text1).Text = items[position].Name;
-            view.FindViewById<TextView>(Android.Resource.Id.Text2).Text = items[position].Kw.ToString();
+                view = context.LayoutInflater.Inflate(Resource.Layout.CustomView, null);
+            view.FindViewById<TextView>(Resource.Id.Text1).Text = items[position].Name;
+            view.FindViewById<TextView>(Resource.Id.Text2).Text = items[position].Kw.ToString();
             return view;
         }
     }
