@@ -17,6 +17,8 @@ namespace Exercises
             var button2 = FindViewById<Button>(Resource.Id.button2);
             var button3 = FindViewById<Button>(Resource.Id.button3);
             var button4 = FindViewById<Button>(Resource.Id.button4);
+            var button5 = FindViewById<Button>(Resource.Id.button5);
+
             var textview1 = FindViewById<TextView>(Resource.Id.textView1);
 
             button1.Click += delegate
@@ -41,6 +43,12 @@ namespace Exercises
             {
                 var listviewActivity = new Intent(this, typeof(ListOfThingsActivity));
                 StartActivity(listviewActivity);
+            };
+
+            button5.Click += delegate
+            {
+                var databaseActivity = new Intent(this, typeof(DatabaseActivity));
+                StartActivity(databaseActivity);
             };
         }
     } 
