@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using System.Collections.Generic;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using SQLite;
 
@@ -29,12 +22,12 @@ namespace Exercises
             var carModelEditText = FindViewById<EditText>(Resource.Id.editText2);
             var carKwEditText = FindViewById<EditText>(Resource.Id.editText3);
             var carListView = FindViewById<ListView>(Resource.Id.listView1);
+
             //Andmebaasi asukoht
             var docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
             pathToDatabase = System.IO.Path.Combine(docsFolder, "db_sqlite.db");
 
             //andmebaasist lugemine
-
             var carlist = updateCarList();
             carListView.Adapter = new CustomAdapter(this, carlist);
 
@@ -46,11 +39,8 @@ namespace Exercises
                 car.Kw = int.Parse(carKwEditText.Text);
                 car.ImageResourceId = Resource.Drawable.Lamborghini;
                 insertUpdateData(car);
-
-
                 carlist = updateCarList();
                 carListView.Adapter = new CustomAdapter(this, carlist);
-
             };            
         }
 
