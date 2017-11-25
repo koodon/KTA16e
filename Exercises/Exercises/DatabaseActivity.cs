@@ -28,39 +28,48 @@ namespace Exercises
             var carModelEditText = FindViewById<EditText>(Resource.Id.editText2);
             var carKwEditText = FindViewById<EditText>(Resource.Id.editText3);
 
-
-
             //Andmebaasi asukoht
             var docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            var pathToDatabase = System.IO.Path.Combine(docsFolder, "db_sqlite.db");            
+            var pathToDatabase = System.IO.Path.Combine(docsFolder, "db_sqlite.db");           
 
             //Lisame andmebaasi ühe auto
-            var car1 = new Car();
-            car1.Name = "Ferrari";
-            car1.Model = "F2004";
-            car1.Kw = 325;
-            car1.ImageResourceId = Resource.Drawable.Lamborghini;
+            //var car1 = new Car();
+            //car1.Name = "Ferrari";
+            //car1.Model = "F2004";
+            //car1.Kw = 325;
+            //car1.ImageResourceId = Resource.Drawable.Lamborghini;
 
-            var car2 = new Car();
-            car2.Name = "Audi";
-            car2.Model = "A6";
-            car2.Kw = 21;
-            car2.ImageResourceId = Resource.Drawable.Lamborghini;
+            //var car2 = new Car();
+            //car2.Name = "Audi";
+            //car2.Model = "A6";
+            //car2.Kw = 21;
+            //car2.ImageResourceId = Resource.Drawable.Lamborghini;
 
-            var message = insertUpdateData(car1, pathToDatabase);
-            var message2 = insertUpdateData(car2, pathToDatabase);
+            //var message = insertUpdateData(car1, pathToDatabase);
+            //var message2 = insertUpdateData(car2, pathToDatabase);
 
 
             //andmebaasist lugemine
             var connection = new SQLiteConnection(pathToDatabase);
             List<Car> carlist = new List<Car>();
-            var query = connection.Table<Car>().Where(x => x.ID == 1);
+            var query = connection.Table<Car>();
             foreach(var car in query)
             {                
                 carlist.Add(car);
             }
+
+            addToDatabaseButton.Click += delegate
+            {
+                var car = new Car();
+                car.Name = carNameEditText.Text;
+                car.Model = carModelEditText.Text;
+                car.Kw = int.Parse(carKwEditText.Text);
+                car.ImageResourceId = Resource.Drawable.Lamborghini;
+                insertUpdateData(car, pathToDatabase);
+            };            
         }
 
+        
         private string createDatabase(string path)
         {
             try
