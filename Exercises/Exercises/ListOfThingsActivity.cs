@@ -39,40 +39,55 @@ namespace Exercises
                                   
             var car1 = new Car();
             car1.Name = "Ferrari";
+            car1.Model = "F2004";
             car1.Kw = 325;
             listOfCars.Add(car1);
             
             var car2 = new Car();
             car2.Name = "Lamborghini";
+            car2.Model = "Diablo";
             car2.Kw = 124;
             listOfCars.Add(car2);
 
             var car3 = new Car();
             car3.Name = "BMW";
+            car3.Model = "Z4";
             car3.Kw = 346;
             listOfCars.Add(car3);
+
             var car4 = new Car();
             car4.Name = "Volkswagen";
+            car4.Model = "Touareg";
             car4.Kw = 2;
             listOfCars.Add(car4);
+
             var car5 = new Car();
             car5.Name = "Lada";
+            car5.Model = "Niva";
             car5.Kw = 34;
             listOfCars.Add(car5);
+
             var car6 = new Car();
             car6.Name = "Opel";
+            car6.Model = "Insignia";
             car6.Kw = 63;
             listOfCars.Add(car6);
+
             var car7 = new Car();
             car7.Name = "Skoda";
+            car7.Model = "Fabia";
             car7.Kw = 25;
             listOfCars.Add(car7);
+
             var car8 = new Car();
             car8.Name = "Alfa";
+            car8.Model = "158";
             car8.Kw = 78;
             listOfCars.Add(car8);
+
             var car9 = new Car();
             car9.Name = "Jaguar";
+            car9.Model = "XF";
             car9.Kw = 700;
             listOfCars.Add(car9);
 
