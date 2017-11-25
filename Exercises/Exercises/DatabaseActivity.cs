@@ -16,6 +16,7 @@ namespace Exercises
     [Activity(Label = "DatabaseActivity")]
     public class DatabaseActivity : Activity
     {
+        string pathToDatabase;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -27,36 +28,15 @@ namespace Exercises
             var carNameEditText = FindViewById<EditText>(Resource.Id.editText1);
             var carModelEditText = FindViewById<EditText>(Resource.Id.editText2);
             var carKwEditText = FindViewById<EditText>(Resource.Id.editText3);
-
+            var carListView = FindViewById<ListView>(Resource.Id.listView1);
             //Andmebaasi asukoht
             var docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            var pathToDatabase = System.IO.Path.Combine(docsFolder, "db_sqlite.db");           
-
-            //Lisame andmebaasi ühe auto
-            //var car1 = new Car();
-            //car1.Name = "Ferrari";
-            //car1.Model = "F2004";
-            //car1.Kw = 325;
-            //car1.ImageResourceId = Resource.Drawable.Lamborghini;
-
-            //var car2 = new Car();
-            //car2.Name = "Audi";
-            //car2.Model = "A6";
-            //car2.Kw = 21;
-            //car2.ImageResourceId = Resource.Drawable.Lamborghini;
-
-            //var message = insertUpdateData(car1, pathToDatabase);
-            //var message2 = insertUpdateData(car2, pathToDatabase);
-
+            pathToDatabase = System.IO.Path.Combine(docsFolder, "db_sqlite.db");
 
             //andmebaasist lugemine
-            var connection = new SQLiteConnection(pathToDatabase);
-            List<Car> carlist = new List<Car>();
-            var query = connection.Table<Car>();
-            foreach(var car in query)
-            {                
-                carlist.Add(car);
-            }
+
+            var carlist = updateCarList();
+            carListView.Adapter = new CustomAdapter(this, carlist);
 
             addToDatabaseButton.Click += delegate
             {
@@ -65,17 +45,33 @@ namespace Exercises
                 car.Model = carModelEditText.Text;
                 car.Kw = int.Parse(carKwEditText.Text);
                 car.ImageResourceId = Resource.Drawable.Lamborghini;
-                insertUpdateData(car, pathToDatabase);
+                insertUpdateData(car);
+
+
+                carlist = updateCarList();
+                carListView.Adapter = new CustomAdapter(this, carlist);
+
             };            
         }
 
+        private List<Car> updateCarList()
+        {
+            var connection = new SQLiteConnection(pathToDatabase);
+            var carlist = new List<Car>();
+            var query = connection.Table<Car>();
+            foreach (var i in query)
+            {
+                carlist.Add(i);
+            }
+            return carlist;
+        }
         
-        private string createDatabase(string path)
+        private string createDatabase()
         {
             try
             {
                 //Loome andmebaasi
-                var connection = new SQLiteConnection(path);
+                var connection = new SQLiteConnection(pathToDatabase);
                 connection.CreateTable<Car>();
                 return "Andmebaas loodud";
             }
@@ -85,11 +81,11 @@ namespace Exercises
             }
         }
 
-        private string insertUpdateData(Car data, string path)
+        private string insertUpdateData(Car data)
         {
             try
             {
-                var db = new SQLiteConnection(path);
+                var db = new SQLiteConnection(pathToDatabase);
                 if (db.Insert(data) != 0)
                     db.Update(data);                
                 return "Ühe kirje andmed lisatud või uuendatud";                
@@ -101,11 +97,11 @@ namespace Exercises
         }
 
 
-        private string insertUpdateAllData(List<Car> data, string path)
+        private string insertUpdateAllData(List<Car> data)
         {
             try
             {
-                var db = new SQLiteConnection(path);
+                var db = new SQLiteConnection(pathToDatabase);
                 if (db.InsertAll(data) != 0)
                     db.UpdateAll(data);
                 return "Nimekiri andmeid lisatud või uuendatud";
